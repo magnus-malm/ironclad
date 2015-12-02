@@ -49,9 +49,9 @@ the password is valid."
     (not (mismatch
           (pbkdf2-hash-password
            password
-           :digest (find-symbol (subseq combined-salt-and-digest
+           :digest (find-symbol (string-upcase (subseq combined-salt-and-digest
                                         (1+ (first positions))
-                                        digest-separator-position)
+                                        digest-separator-position))
                                 '#:ironclad)
            :iterations (parse-integer combined-salt-and-digest
                                       :start (1+ digest-separator-position)
